@@ -13,7 +13,11 @@ Java RMI e Riferimenti Remoti
 
 # RUOLI:
 Daniel:
+
 Karina:
+
 Endri:
+
 Andrei:
+
 Hiari:
