@@ -2,7 +2,7 @@
 Java RMI e Riferimenti Remoti.
 
 # PDF
-<a href="http://www.lia.deis.unibo.it/Courses/RetiT/materiale/esercitazioni/es7/svolta7.pdf">Svolto</a> <a href="http://www.lia.deis.unibo.it/Courses/RetiT/materiale/esercitazioni/es7/proposta7.pdf">Proposta</>
+<a href="http://www.lia.deis.unibo.it/Courses/RetiT/materiale/esercitazioni/es7/svolta7.pdf">Svolto</a> <a href="http://www.lia.deis.unibo.it/Courses/RetiT/materiale/esercitazioni/es7/proposta7.pdf">Proposta</a>
 
 # Da realizzare
 1) Classe Client;
