@@ -15,14 +15,15 @@ RegistryRemotoTagServer {
 // num. entry [nomelogico][ref]
 final int tableSize = 100;
 
-// Tabella: la prima colonna contiene i nomi, la seconda i riferimenti remoti
-Object[][] table = new Object[tableSize][2];
+// Tabella: la prima colonna contiene i nomi, la seconda i riferimenti remoti, la terza i tag
+Object[][] table = new Object[tableSize][3];
 
 public RegistryRemotoTagImpl() throws RemoteException {
 	super();
 	for (int i = 0; i < tableSize; i++) {
 		table[i][0] = null;
 		table[i][1] = null;
+		table[i][2] = null;
 	}
 }
 
@@ -77,13 +78,14 @@ public synchronized Object[][] restituisciTutti() throws RemoteException {
 	int cont = 0;
 	for (int i = 0; i < tableSize; i++)
 		if (table[i][0] != null) cont++;
-	Object[][] risultato = new Object[cont][2];
+	Object[][] risultato = new Object[cont][3];
 	// Ora lo uso come indice per il riempimento
 	cont = 0;
 	for (int i = 0; i < tableSize; i++)
 		if (table[i][0] != null) {
 			risultato[cont][0] = table[i][0];
 			risultato[cont][1] = table[i][1];
+			risultato[cont][2] = table[i][2];
 		}
 	return risultato;
 }
@@ -97,6 +99,7 @@ public synchronized boolean eliminaPrimo(String nomeLogico)
 			if ( nomeLogico.equals((String) table[i][0]) ) {
 				table[i][0] = null;
 				table[i][1] = null;
+				table[i][2] = null;
 				risultato = true;
 				break;
 			}
@@ -113,6 +116,7 @@ public synchronized boolean eliminaTutti(String nomeLogico)
     	risultato = true;
 			table[i][0] = null;
 			table[i][1] = null;
+			table[i][2] = null;
 		}
 	return risultato;
 }
@@ -166,17 +170,31 @@ public static void main(String[] args) {
 
 	@Override
 	public boolean associaTag(String nome_logico_server, Tag tag) {
-		// TODO Auto-generated method stub
-		
-		return false;
-		
+		boolean risultato = false;
+		if( nome_logico_server == null ) return risultato;    
+		for (int i = 0; i < tableSize; i++)
+			if ( nome_logico_server.equals((String) table[i][0]) ) {
+				if (risultato == false)
+					risultato = true;
+				table[i][2] = tag;
+				break;
+			}
+		return risultato;
 	}
 	
 	@Override
 	public Remote[] cercaTag(Tag tag) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-		return null;
-		
+		int cont = 0;
+		if( tag == null ) return new Remote[0];
+		for (int i = 0; i < tableSize; i++)
+			if ( tag.equals((String) table[i][2]) )
+				cont++;
+		Remote[] risultato = new Remote[cont];
+		// Ora lo uso come indice per il riempimento
+		cont = 0;
+		for (int i = 0; i < tableSize; i++)
+			if ( tag.equals((String) table[i][2]) )
+				risultato[cont++] = (Remote) table[i][1];
+		return risultato;
 	}
 }
