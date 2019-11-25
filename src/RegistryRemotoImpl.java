@@ -1,7 +1,4 @@
-/**
- * 	Implementazione del Registry Remoto.
- *	Metodi descritti nelle interfacce.  
- */
+
 
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
