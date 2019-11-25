@@ -1,3 +1,4 @@
+package remoteRegister;
 /**
  *  Interfaccia remota Registry per il Cliente.
  *  	Cerca = ottiene il primo riferimento al server registrato con 'nomeLogico'.
@@ -6,6 +7,8 @@
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+
+//Interfaccia base del remote registry verso il client
 
 public interface RegistryRemotoClient extends Remote {
 	public Remote cerca(String nomeLogico) throws RemoteException;

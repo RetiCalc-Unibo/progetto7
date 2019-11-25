@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 
+import remoteRegister.*;
+
 class Client {
 
   // Avvio del Client RMI

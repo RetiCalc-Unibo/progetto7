@@ -1,3 +1,4 @@
+package remoteRegister;
 /**
  *  Interfaccia remota Registry per il Server. Estende quella per il Client.
  *  	Aggiungi = aggiunge un server remoto, dato 'nomeLogico', 'Riferimento'.
@@ -7,6 +8,8 @@
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+
+//interfaccia base del remote registry verso il Server
 
 public interface RegistryRemotoServer extends RegistryRemotoClient {
 	public boolean aggiungi(String nomeLogico, Remote riferimento) throws RemoteException;
