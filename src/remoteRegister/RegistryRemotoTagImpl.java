@@ -162,15 +162,21 @@ public static void main(String[] args) {
 
 
 //NUOVI METODI AGGIUNTI 
-@Override
-public void cercaTag(String tag) throws RemoteException {
-	// TODO Auto-generated method stub
-	
-}
 
-@Override
-public void associaTag(String nome_logico_server, String tag) {
-	// TODO Auto-generated method stub
+
+	@Override
+	public boolean associaTag(String nome_logico_server, Tag tag) {
+		// TODO Auto-generated method stub
+		
+		return false;
+		
+	}
 	
-}
+	@Override
+	public Remote[] cercaTag(Tag tag) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+		return null;
+		
+	}
 }
