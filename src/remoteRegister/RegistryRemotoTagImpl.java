@@ -169,7 +169,7 @@ public static void main(String[] args) {
 
 
 	@Override
-	public boolean associaTag(String nome_logico_server, Tag tag) {
+	public boolean associaTag(String nome_logico_server, String tag) {
 		boolean risultato = false;
 		if( nome_logico_server == null ) return risultato;    
 		for (int i = 0; i < tableSize; i++)
@@ -183,7 +183,7 @@ public static void main(String[] args) {
 	}
 	
 	@Override
-	public Remote[] cercaTag(Tag tag) throws RemoteException {
+	public Remote[] cercaTag(String tag) throws RemoteException {
 		int cont = 0;
 		if( tag == null ) return new Remote[0];
 		for (int i = 0; i < tableSize; i++)

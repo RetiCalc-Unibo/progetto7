@@ -6,6 +6,6 @@ import java.rmi.RemoteException;
 
 public interface RegistryRemotoTagClient extends RegistryRemotoClient{
 	
-	public Remote[] cercaTag(Tag tag) throws RemoteException;
+	public Remote[] cercaTag(String tag) throws RemoteException;
 
 }

@@ -6,5 +6,5 @@ import java.rmi.Remote;
 // ----> INTERFACCIA COMPLETA DA IMPLEMENTARE NEL REMOTE REGISTER
 public interface RegistryRemotoTagServer extends RegistryRemotoServer, RegistryRemotoTagClient {
 	
-	public boolean associaTag(String nome_logico_server, Tag tag);
+	public boolean associaTag(String nome_logico_server, String tag);
 }
