@@ -48,30 +48,31 @@ class Client {
 		try {
 			String completeRemoteRegistryName = "//" + registryRemotoHost + ":"
 					+ registryRemotoPort + "/" + registryRemotoName;
-			RegistryRemotoClient registryRemoto = 
-					(RegistryRemotoClient) Naming.lookup(completeRemoteRegistryName);
+			RegistryRemotoTagClient registryRemoto = 
+					(RegistryRemotoTagClient) Naming.lookup(completeRemoteRegistryName);
 
 
 			//Ricerca per nome del servizio o per tag
 
 			while (!check) {
-				System.out.println("Scegliere il tipo di ricerca (T = Tag, S = service name"));
+				System.out.println("Scegliere il tipo di ricerca (T = Tag, S = service name):");
 				foo = stdIn.readLine();
-				if (foo = "T"){
+				if (foo == "T"){
 					
 					System.out.println("Richiesta ricerca per tag\n" +
 						"Inserire Tag richiesto");
-					serviceToFind = stdIn.readLine();
-					String [] serversWithTag = (String []) registryRemoto.cercaTag(serviceToFind);
-					if()
-					for(String service in serversWithTag)
-						System.out.println(service);
-					check = true;
+					serviceTag = stdIn.readLine();
+					String [] serversWithTag = (String []) registryRemoto.cercaTag(serviceTag);
+					if(serversWithTag.length > 0){
+        					for(String nameS : serversWithTag)
+        						System.out.println(nameS);
+        					check = true;
+                     } else System.out.println("Nessun elemento trovato");
 				}
-				else if(foo = "S" || check = true){
+				else if(foo == "S" || check == true){
 					System.out.println("Richiesta ricerca per service name\n" +
 						"Inserire service richiesto");
-					serviceToFind = stdIn.readLine();
+					serviceName = stdIn.readLine();
 					check = true; 
 				
 				} else System.out.println("Opzione non disponibile.");
