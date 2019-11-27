@@ -61,9 +61,9 @@ public class ServerImpl extends UnicastRemoteObject implements
     String serviceName = null;
 
     // Controllo dei parametri della riga di comando
-    if (args.length != 2 && args.length != 3) {
+    if (args.length != 2 && args.length != 3 && args.length != 4) {
       System.out
-          .println("Sintassi: ServerImpl NomeServizio NomeHostRegistryRemoto [registryPort], registryPort intero");
+          .println("Sintassi: ServerImpl NomeServizio NomeHostRegistryRemoto [registryPort] [tag]");
       System.exit(1);
     }
     serviceName = args[0];
@@ -73,7 +73,7 @@ public class ServerImpl extends UnicastRemoteObject implements
         registryRemotoPort = Integer.parseInt(args[1]);
       } catch (Exception e) {
         System.out
-            .println("Sintassi: ServerImpl NomeServizio NomeHostRegistryRemoto [registryPort], registryPort intero");
+            .println("Sintassi: ServerImpl NomeServizio NomeHostRegistryRemoto [registryPort] [tag]");
         System.exit(2);
       }
     }
@@ -94,6 +94,14 @@ public class ServerImpl extends UnicastRemoteObject implements
       registryRemoto.aggiungi(serviceName, ServerImplRMI);
       System.out.println("ServerImpl RMI: Servizio \"" + serviceName
           + "\" registrato");
+
+      if(args.length == 4){
+      	boolean association = registryRemoto.associaTag(serviceName, args[3]);
+        if(association) 
+        	System.out.println("ServerImpl RMI: Tag associato correttamente");
+        else System.out.println("ServerImpl RMI: Tag scelto non disponibile");
+      }
+
     } catch (Exception e) {
       System.err.println("ServerImpl RMI \"" + serviceName + "\": "
           + e.getMessage());

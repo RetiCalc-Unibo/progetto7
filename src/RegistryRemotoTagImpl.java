@@ -17,6 +17,8 @@ final int tableSize = 100;
 // Tabella: la prima colonna contiene i nomi, la seconda i riferimenti remoti, la terza i tag
 Object[][] table = new Object[tableSize][3];
 
+static Tag itag;
+
 public RegistryRemotoTagImpl() throws RemoteException {
 	super();
 	for (int i = 0; i < tableSize; i++) {
@@ -127,7 +129,7 @@ public static void main(String[] args) {
 	int registryRemotoPort = 1099;
 	String registryRemotoHost = "localhost";
 	String registryRemotoName = "RegistryRemoto";
-
+	itag = new Tag();
 	// Controllo dei parametri della riga di comando
 	if (args.length != 0 && args.length != 1) {
 		System.out.println("Sintassi: ServerImpl [registryPort]");
@@ -164,16 +166,15 @@ public static void main(String[] args) {
 }
 
 
-//NUOVI METODI AGGIUNTI 
 
+//NUOVI METODI AGGIUNTI 
 
 	public synchronized boolean associaTag(String nome_logico_server, String tag) {
 		boolean risultato = false;
-		if( nome_logico_server == null ) return risultato;    
+		if( (nome_logico_server == null) || !itag.check(tag) ) return risultato;    
 		for (int i = 0; i < tableSize; i++)
 			if ( nome_logico_server.equals((String) table[i][0]) ) {
-				if (risultato == false)
-					risultato = true;
+				risultato = true;
 				table[i][2] = tag;
 				break;
 			}
