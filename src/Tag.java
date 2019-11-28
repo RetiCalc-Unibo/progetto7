@@ -1,8 +1,4 @@
-import java.io.Serializable;
-
 public class Tag {
-	 
-	private static final long serialVersionUID = 1L;
 	public String [] tags = new String [10];
 	
 	public Tag() {
