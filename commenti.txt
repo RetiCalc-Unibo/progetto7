@@ -1,0 +1,15 @@
+Client:
+	permette di scegliere il metodo di ricerca a cui accedere
+
+RegistryRemoto(1): 
+	se il Tag è disponibile, procede con l'associazione
+
+RegistryRemoto(2):
+	ricerca i nomi logici associati al Tag
+
+ServerImpl: 
+	se gli argomenti sono 4, al termine della registrazione si associa
+
+Tag: 
+	corrispondono alle località in cui si svolgono i congressi
+ 
